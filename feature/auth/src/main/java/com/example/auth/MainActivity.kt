@@ -1,4 +1,4 @@
-package com.example.jello
+package com.example.auth
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,14 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jello.ui.theme.JelloTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            JelloTheme {
+            com.example.ui.theme.JelloTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
@@ -38,10 +37,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, apiLevel = 34)
 @Composable
 fun GreetingPreview() {
-    JelloTheme {
+    com.example.ui.theme.JelloTheme {
         Greeting("Android")
     }
 }

@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.example.jello"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    // Module
+    implementation(project(":feature:auth"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
