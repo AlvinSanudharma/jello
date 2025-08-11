@@ -1,12 +1,16 @@
 package com.example.ui.components
 
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -66,23 +70,29 @@ fun JelloTextRegularWithClick(
         pop()
     }
 
-    ClickableText(
+    val textLayoutResult = remember { mutableStateOf<TextLayoutResult?>(null) }
+
+    Text(
         text = annotatedText,
-        modifier = modifier,
+        modifier = modifier.pointerInput(onClick) {
+            detectTapGestures { offset ->
+                textLayoutResult.value?.let { layoutResult ->
+                    val position = layoutResult.getOffsetForPosition(offset)
+                    annotatedText.getStringAnnotations(tag = "TEXT_CLICK", start = position, end = position)
+                        .firstOrNull()?.let {
+                            onClick()
+                        }
+                }
+            }
+        },
         style =  TextStyle(
             fontSize = 14.sp,
             fontWeight = FontWeight.Normal,
             lineHeight = 24.sp,
             textAlign = TextAlign.Left,
         ),
-        onClick = { offset ->
-            annotatedText.getStringAnnotations(
-                tag = "TEXT_CLICK",
-                start = offset,
-                end = offset
-            ).firstOrNull()?.let {
-                onClick()
-            }
+        onTextLayout = {
+            textLayoutResult.value = it
         }
     )
 }
