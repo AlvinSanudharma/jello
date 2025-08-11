@@ -98,6 +98,27 @@ fun JelloTextRegularWithClick(
     )
 }
 
+@Composable
+fun JelloTextRegular() {
+    Text(
+        "E-mail",
+        style = TextStyle(
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Normal,
+            lineHeight = 16.sp,
+            textAlign = TextAlign.Left,
+
+        ),
+        modifier = Modifier.padding(16.dp),
+    )
+}
+
+@Preview(apiLevel = 34)
+@Composable
+fun JelloTextRegularPreview() {
+    JelloTextRegular()
+}
+
 @Preview(apiLevel = 34)
 @Composable
 fun JelloTextHeaderPreview() {
