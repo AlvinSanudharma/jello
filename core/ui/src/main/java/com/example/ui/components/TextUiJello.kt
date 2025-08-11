@@ -130,27 +130,21 @@ fun JelloTextViewRow(
     Row(
         modifier = Modifier.padding(16.dp)
     ) {
-        Row {
-            Checkbox(
-                checked = checked,
-                onCheckedChange = onCheckedChange
-            )
+        JelloCheckBox(
+            checked = checked,
+            onCheckedChange
+        )
 
-            Text("Remember me")
-
-            val annotatedString = buildAnnotatedString {
-                append("Forgot Password?")
-            }
-
-            ClickableText(
-                text = annotatedString,
-                onClick = {
-                    onTextClick()
-                }
-            )
+        val annotatedString = buildAnnotatedString {
+            append("Forgot Password?")
         }
 
-
+        ClickableText(
+            text = annotatedString,
+            onClick = {
+                onTextClick()
+            }
+        )
     }
 }
 
