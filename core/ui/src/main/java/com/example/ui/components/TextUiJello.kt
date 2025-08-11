@@ -99,9 +99,13 @@ fun JelloTextRegularWithClick(
 }
 
 @Composable
-fun JelloTextRegular() {
+fun JelloTextRegular(
+    text: String = "E-mail",
+    modifier: Modifier =  Modifier.padding(16.dp),
+    color: Color = Color.Black
+) {
     Text(
-        "E-mail",
+        text,
         style = TextStyle(
             fontSize = 14.sp,
             fontWeight = FontWeight.Normal,
@@ -109,7 +113,8 @@ fun JelloTextRegular() {
             textAlign = TextAlign.Left,
 
         ),
-        modifier = Modifier.padding(16.dp),
+        modifier = modifier,
+        color = color
     )
 }
 
