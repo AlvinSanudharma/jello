@@ -1,7 +1,10 @@
 package com.example.ui.components
 
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.ClickableText
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -116,6 +119,45 @@ fun JelloTextRegular(
         modifier = modifier,
         color = color
     )
+}
+
+@Composable
+fun JelloTextViewRow(
+    checked: Boolean = false,
+    onCheckedChange: (Boolean) -> Unit = {},
+    onTextClick: () -> Unit = {}
+) {
+    Row(
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Row {
+            Checkbox(
+                checked = checked,
+                onCheckedChange = onCheckedChange
+            )
+
+            Text("Remember me")
+
+            val annotatedString = buildAnnotatedString {
+                append("Forgot Password?")
+            }
+
+            ClickableText(
+                text = annotatedString,
+                onClick = {
+                    onTextClick()
+                }
+            )
+        }
+
+
+    }
+}
+
+@Preview(apiLevel = 34)
+@Composable
+fun JelloTextViewRowPreview() {
+    JelloTextViewRow()
 }
 
 @Preview(apiLevel = 34)
