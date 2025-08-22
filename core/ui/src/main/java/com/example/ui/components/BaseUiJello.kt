@@ -1,6 +1,8 @@
 package com.example.ui.components
 
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -24,7 +26,7 @@ fun JelloBaseButton(
     enable: Boolean = true,
     shape: Shape = RoundedCornerShape(8.dp),
     color: ButtonColors = ButtonDefaults.buttonColors(
-        containerColor = Color.Blue,
+        containerColor = Color.Black,
         contentColor = Color.White
     )
 ) {
@@ -53,10 +55,12 @@ fun JelloIconBaseButton(
     enable: Boolean = true,
     shape: Shape = RoundedCornerShape(8.dp),
     colors: ButtonColors = ButtonDefaults.buttonColors(
-        containerColor = Color.Blue,
+        containerColor = Color.Black,
         contentColor = Color.White
     ),
-    color: Color = Color.White
+    color: Color = Color.White,
+    descriptionIcon: String = "Facebook",
+    srcIcon: Int = R.drawable.ic_facebook
 ) {
     Button(
         modifier = modifier,
@@ -67,10 +71,13 @@ fun JelloIconBaseButton(
     ) {
         Icon(
             painter = painterResource(
-                id = R.drawable.ic_facebook,),
-            contentDescription = "Facebook",
+                id = srcIcon,),
+            contentDescription = descriptionIcon,
             modifier = Modifier.size(24.dp),
             tint = color)
+
+        Spacer(modifier = Modifier.width(8.dp))
+
         Text(text)
     }
 }
