@@ -25,7 +25,7 @@ fun JelloBaseButton(
     onClick: () -> Unit = {},
     enable: Boolean = true,
     shape: Shape = RoundedCornerShape(8.dp),
-    color: ButtonColors = ButtonDefaults.buttonColors(
+    colors: ButtonColors = ButtonDefaults.buttonColors(
         containerColor = Color.Black,
         contentColor = Color.White
     )
@@ -33,7 +33,7 @@ fun JelloBaseButton(
     Button(
         modifier = modifier,
         shape = shape,
-        colors = color,
+        colors = colors,
         enabled = enable,
         onClick = { onClick() }
     ) {

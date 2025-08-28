@@ -9,7 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.ui.R
 import com.example.ui.theme.LightOrange
+import com.example.ui.theme.ModerateBlue
 import com.example.ui.theme.VeryDarkGrayistBlue
 
 @Composable
@@ -24,10 +26,31 @@ fun JelloButtonPrimary(
         modifier = Modifier.fillMaxWidth()
             .padding(16.dp)
             .height(56.dp),
-        color = ButtonDefaults.buttonColors(
+        colors = ButtonDefaults.buttonColors(
             containerColor = LightOrange,
             contentColor = VeryDarkGrayistBlue
         )
+    )
+}
+
+@Composable
+fun JelloButtonFacebook(
+    text: String = "Facebook",
+    onClick: () -> Unit = {}
+) {
+    JelloIconBaseButton(
+        text = text,
+        onClick = onClick,
+        enable = true,
+        modifier = Modifier.fillMaxWidth()
+            .padding(16.dp)
+            .height(56.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = ModerateBlue,
+            contentColor = Color.White
+        ),
+        srcIcon = R.drawable.ic_facebook,
+        descriptionIcon = "Facebook"
     )
 }
 
@@ -35,4 +58,10 @@ fun JelloButtonPrimary(
 @Composable
 fun JelloButtonPrimaryPreview() {
     JelloButtonPrimary()
+}
+
+@Preview(apiLevel = 34)
+@Composable
+fun JelloButtonFacebookPreview() {
+    JelloButtonFacebook()
 }
