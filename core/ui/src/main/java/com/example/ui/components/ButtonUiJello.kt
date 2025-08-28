@@ -13,6 +13,7 @@ import com.example.ui.R
 import com.example.ui.theme.LightOrange
 import com.example.ui.theme.ModerateBlue
 import com.example.ui.theme.VeryDarkGrayistBlue
+import com.example.ui.theme.VividRed
 
 @Composable
 fun JelloButtonPrimary(
@@ -54,6 +55,27 @@ fun JelloButtonFacebook(
     )
 }
 
+@Composable
+fun JelloButtonGoogle(
+    text: String = "Google",
+    onClick: () -> Unit = {}
+) {
+    JelloIconBaseButton(
+        text = text,
+        onClick = onClick,
+        enable = true,
+        modifier = Modifier.fillMaxWidth()
+            .padding(16.dp)
+            .height(56.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = VividRed,
+            contentColor = Color.White
+        ),
+        srcIcon = R.drawable.ic_google,
+        descriptionIcon = "Facebook"
+    )
+}
+
 @Preview(apiLevel = 34)
 @Composable
 fun JelloButtonPrimaryPreview() {
@@ -64,4 +86,10 @@ fun JelloButtonPrimaryPreview() {
 @Composable
 fun JelloButtonFacebookPreview() {
     JelloButtonFacebook()
+}
+
+@Preview(apiLevel = 34)
+@Composable
+fun JelloButtonGooglePreview() {
+    JelloButtonGoogle()
 }
