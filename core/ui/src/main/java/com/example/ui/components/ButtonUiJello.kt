@@ -1,5 +1,8 @@
 package com.example.ui.components
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -37,15 +40,16 @@ fun JelloButtonPrimary(
 @Composable
 fun JelloButtonFacebook(
     text: String = "Facebook",
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    modifier: Modifier = Modifier.fillMaxWidth()
+        .padding(16.dp)
+        .height(56.dp)
 ) {
     JelloIconBaseButton(
         text = text,
         onClick = onClick,
         enable = true,
-        modifier = Modifier.fillMaxWidth()
-            .padding(16.dp)
-            .height(56.dp),
+        modifier = modifier,
         colors = ButtonDefaults.buttonColors(
             containerColor = ModerateBlue,
             contentColor = Color.White
@@ -58,15 +62,16 @@ fun JelloButtonFacebook(
 @Composable
 fun JelloButtonGoogle(
     text: String = "Google",
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    modifier: Modifier = Modifier.fillMaxWidth()
+        .padding(16.dp)
+        .height(56.dp)
 ) {
     JelloIconBaseButton(
         text = text,
         onClick = onClick,
         enable = true,
-        modifier = Modifier.fillMaxWidth()
-            .padding(16.dp)
-            .height(56.dp),
+        modifier = modifier,
         colors = ButtonDefaults.buttonColors(
             containerColor = VividRed,
             contentColor = Color.White
@@ -92,4 +97,31 @@ fun JelloButtonFacebookPreview() {
 @Composable
 fun JelloButtonGooglePreview() {
     JelloButtonGoogle()
+}
+
+@Composable
+fun JelloButtonSosmedRow(
+    onCLickGoogle: () -> Unit = {},
+    onClickFacebook: () -> Unit = {},
+    modifier: Modifier = Modifier.fillMaxWidth().padding(16.dp),
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        JelloButtonGoogle(
+            modifier = Modifier.weight(1f).height(56.dp),
+            onClick = onCLickGoogle
+        )
+        JelloButtonFacebook(
+            modifier = Modifier.weight(1f).height(56.dp),
+            onClick = onClickFacebook
+        )
+    }
+}
+
+@Preview(apiLevel = 34)
+@Composable
+fun JelloButtonSosmedRowPreview() {
+    JelloButtonSosmedRow()
 }
