@@ -37,7 +37,7 @@ fun EditTextUiJello(
                 .padding(horizontal = 16.dp)
                 .border(width = 1.dp, color = VeryLightGray, shape = RoundedCornerShape(8.dp))
                 .background(Color.White)
-                .padding(8.dp),
+                .padding(20.dp),
         textStyle =  TextStyle(
             fontSize = 14.sp,
             color = Color.Black
