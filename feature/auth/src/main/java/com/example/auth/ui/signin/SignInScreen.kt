@@ -27,6 +27,7 @@ fun SignInScreen(
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
+            .padding(vertical = 16.dp)
             .background(Color.White)
     ) {
         JelloImageViewClick(
@@ -48,9 +49,7 @@ fun SignInScreen(
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         Spacer(Modifier.height(10.dp))
-        EditTextUiJello(
-
-        )
+        EditTextUiJello()
         Spacer(Modifier.height(20.dp))
         JelloTextRegular(
             text = "Password",
